@@ -117,6 +117,7 @@ func main() {
 		conn, err := ln.Accept()
 		if err != nil {
 			fmt.Printf("Could not accept connection: %v\n", err)
+			continue
 		}
 		go client(conn, channel)
 	}
