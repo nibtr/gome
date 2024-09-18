@@ -81,11 +81,11 @@ func server(channel Channel) {
 		case data := <-channel.internal:
 			ip := data.conn.RemoteAddr().String()
 			connectedClients[ip] = data.conn
-			broadcast(ip+" has connected\n", ip)
 
 			switch data.msgType {
 			case Connected:
 				log.Println("Client: " + ip + " connected")
+				broadcast(ip+" has connected\n", ip)
 			case Disconnected:
 				log.Println("Client: " + ip + " disconnected")
 				broadcast(ip+" has disconnected\n", ip)
